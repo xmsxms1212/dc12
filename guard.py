@@ -210,25 +210,6 @@ async def on_message(message: discord.Message):
 
     # ==========================================
     # .PWOXAI
-    ```python
-# ==========================================
-
-@bot.event
-async def on_message(message: discord.Message):
-
-    if message.author.bot:
-        return
-
-    # ==========================================
-    # DM DESTEK SİSTEMİ
-    # ==========================================
-
-    if message.guild is None:
-        await handle_dm(message)
-        return
-
-    # ==========================================
-    # .PWOXAI
     # ==========================================
 
     prefix = ".pwoxai"
@@ -254,8 +235,6 @@ async def on_message(message: discord.Message):
                 mention_author=False
             )
             return
-```
-
 
         async with message.channel.typing():
             try:
