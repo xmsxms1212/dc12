@@ -210,6 +210,25 @@ async def on_message(message: discord.Message):
 
     # ==========================================
     # .PWOXAI
+    ```python
+# ==========================================
+
+@bot.event
+async def on_message(message: discord.Message):
+
+    if message.author.bot:
+        return
+
+    # ==========================================
+    # DM DESTEK SİSTEMİ
+    # ==========================================
+
+    if message.guild is None:
+        await handle_dm(message)
+        return
+
+    # ==========================================
+    # .PWOXAI
     # ==========================================
 
     prefix = ".pwoxai"
@@ -217,14 +236,14 @@ async def on_message(message: discord.Message):
 
     if content.lower().startswith(prefix):
 
-    if message.author.id != OWNER_ID:
-        await message.reply(
-            "❌ Bu AI komutunu sadece bot sahibi kullanabilir.",
-            mention_author=False
-        )
-        return
+        if message.author.id != OWNER_ID:
+            await message.reply(
+                "❌ Bu AI komutunu sadece bot sahibi kullanabilir.",
+                mention_author=False
+            )
+            return
 
-    prompt = content[len(prefix):].strip()
+        prompt = content[len(prefix):].strip()
 
         if not prompt:
             await message.reply(
@@ -235,6 +254,8 @@ async def on_message(message: discord.Message):
                 mention_author=False
             )
             return
+```
+
 
         async with message.channel.typing():
             try:
