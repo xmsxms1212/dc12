@@ -70,8 +70,9 @@ history = defaultdict(lambda: deque(maxlen=16))
 intents = discord.Intents.default()
 intents.message_content = True
 
+OWNER_ID = 449133974867017728
+
 bot = commands.Bot(
-    OWNER_ID = 449133974867017728
     command_prefix=(".", "!"),
     intents=intents
 )
