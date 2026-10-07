@@ -71,6 +71,7 @@ intents = discord.Intents.default()
 intents.message_content = True
 
 bot = commands.Bot(
+    OWNER_ID = 449133974867017728
     command_prefix=(".", "!"),
     intents=intents
 )
@@ -214,7 +215,15 @@ async def on_message(message: discord.Message):
     content = message.content.strip()
 
     if content.lower().startswith(prefix):
-        prompt = content[len(prefix):].strip()
+
+    if message.author.id != OWNER_ID:
+        await message.reply(
+            "❌ Bu AI komutunu sadece bot sahibi kullanabilir.",
+            mention_author=False
+        )
+        return
+
+    prompt = content[len(prefix):].strip()
 
         if not prompt:
             await message.reply(
